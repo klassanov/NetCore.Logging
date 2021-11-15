@@ -8,20 +8,31 @@ namespace Logging.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IBookService _bookService;
-        private readonly ILogger<HomeController> _logger;
+        private readonly IBookService bookService;
+        private readonly IAuthorService authorService;
+        private readonly ILogger<HomeController> logger;
 
-        public HomeController(IBookService bookService, ILogger<HomeController> logger)
+        public HomeController(
+            IBookService bookService,
+            IAuthorService authorService,
+            ILogger<HomeController> logger)
         {
-            this._bookService = bookService;
-            this._logger = logger;
+            this.bookService = bookService;
+            this.authorService = authorService;
+            this.logger = logger;
         }
 
         public IActionResult Index()
         {
-            var books = this._bookService.GetBooks();
+            var authors = this.authorService.GetAllAuthors();
+            var books = this.bookService.GetAllBooks();
 
-            this._logger.LogInformation("Hello from the Home/Index page");
+            using (this.logger.BeginScope("GettingMoreBooks"))
+            {
+                this.bookService.GetAllBooks();
+            }
+
+            //this.logger.LogInformation("Hello from the Home/Index page");
             return View();
         }
 

@@ -5,6 +5,8 @@ namespace Logging.Interfaces.Data
 {
     public interface IBookService
     {
-        IEnumerable<Book> GetBooks();
+        IEnumerable<Book> GetAllBooks();
+
+        IEnumerable<Book> GetMoreBooks();
     }
 }

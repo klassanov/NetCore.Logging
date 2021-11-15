@@ -23,6 +23,7 @@ namespace Logging.Web
             services.AddControllersWithViews();
 
             services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IAuthorService, AuthorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

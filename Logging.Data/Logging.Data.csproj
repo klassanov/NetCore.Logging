@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Logging.Constants\Logging.Constants.csproj" />
     <ProjectReference Include="..\Logging.Interfaces\Logging.Interfaces.csproj" />
   </ItemGroup>
 

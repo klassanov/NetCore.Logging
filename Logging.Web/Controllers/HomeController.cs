@@ -1,7 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using Logging.Interfaces.Data;
 using Logging.LoggerExtensions;
 using Logging.Web.Models;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -52,13 +54,37 @@ namespace Logging.Web.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            Exception ex = new Exception("Users should not see this!");
+
+            //Add custom data to the exception, it can be something from the request as well
+            //Not automatically included in the exception log, we should handle this ourselves
+            //by adding log entries or by using the serilog exception logging package
+            ex.Data.Add("CreditCardNumber", 234);
+
+            throw ex;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            //Get the exception
+            string creditCartNumber = null;
+            var exceptionPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            var ex = exceptionPathFeature?.Error;
+
+            if (ex != null && ex.Data.Contains("CreditCardNumber"))
+            {
+                creditCartNumber = ex.Data["CreditCardNumber"].ToString();
+            }
+
+            //Anyway, be aware of not exposing sensitive data
+            var error = new ErrorViewModel()
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                Message = $"Data added to the exception: {creditCartNumber}"
+            };
+
+            return View(error);
         }
     }
 }

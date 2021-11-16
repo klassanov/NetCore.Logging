@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -26,6 +25,9 @@ namespace Logging.API.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            throw new Exception("Web API exception");
+
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Logging.Interfaces.Data;
+using Logging.LoggerExtensions;
 using Logging.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -24,13 +25,26 @@ namespace Logging.Web.Controllers
 
         public IActionResult Index()
         {
-            var authors = this.authorService.GetAllAuthors();
-            var books = this.bookService.GetAllBooks();
+            //var authors = this.authorService.GetAllAuthors();
+            //var books = this.bookService.GetAllBooks();
 
-            using (this.logger.BeginScope("GettingMoreBooks"))
+            //using (this.logger.BeginScope("GettingMoreBooks"))
+            //{
+            //    this.bookService.GetAllBooks();
+            //}
+
+
+
+            //High performance logging
+            using (logger.GetBooksScoped("123"))
             {
-                this.bookService.GetAllBooks();
+                logger.RepoGetBooks();
+                this.bookService.GetMoreBooks();
+                logger.RepoGetMoreBooks("usp_GetMoreBooks");
+                this.bookService.GetMoreBooks();
             }
+
+
 
             //this.logger.LogInformation("Hello from the Home/Index page");
             return View();

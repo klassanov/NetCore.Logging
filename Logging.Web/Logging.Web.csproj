@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Logging.Data\Logging.Data.csproj" />
     <ProjectReference Include="..\Logging.Interfaces\Logging.Interfaces.csproj" />
+    <ProjectReference Include="..\Logging.LoggerExtensions\Logging.LoggerExtensions.csproj" />
   </ItemGroup>
 
 </Project>

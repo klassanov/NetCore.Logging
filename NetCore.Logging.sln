@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Interfaces", "Loggi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.Constants", "Logging.Constants\Logging.Constants.csproj", "{651BD98E-ECEC-4863-815A-47FB564E3871}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.LoggerExtensions", "Logging.LoggerExtensions\Logging.LoggerExtensions.csproj", "{78A41184-3BDB-4643-8647-01EDD8AB7FB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{651BD98E-ECEC-4863-815A-47FB564E3871}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{651BD98E-ECEC-4863-815A-47FB564E3871}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{651BD98E-ECEC-4863-815A-47FB564E3871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A41184-3BDB-4643-8647-01EDD8AB7FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A41184-3BDB-4643-8647-01EDD8AB7FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A41184-3BDB-4643-8647-01EDD8AB7FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A41184-3BDB-4643-8647-01EDD8AB7FB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

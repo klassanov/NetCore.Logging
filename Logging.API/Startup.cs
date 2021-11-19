@@ -1,3 +1,4 @@
+using Logging.API.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -27,11 +28,24 @@ namespace Logging.API
         {
             if (env.IsDevelopment())
             {
+                //Create some exception handling middleware
                 //app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
+            //Add the new middleware
+            app.UseApiExceptionHandler();
+
+            //Add the new middleware with options
+            //app.UseApiExceptionHandler(options =>
+            //{
+            //    options.AddResponseDetails = (context, exception, error) =>
+            //    {
+            //        //Can be defined here or separately
+            //        error.Detail = $"Custom error detail--Exception type { exception.GetType().Name}";
+            //    };
+            //});
 
             app.UseRouting();
 

@@ -35,17 +35,17 @@ namespace Logging.API
             }
 
             //Add the new middleware
-            app.UseApiExceptionHandler();
+            //app.UseApiExceptionHandler();
 
             //Add the new middleware with options
-            //app.UseApiExceptionHandler(options =>
-            //{
-            //    options.AddResponseDetails = (context, exception, error) =>
-            //    {
-            //        //Can be defined here or separately
-            //        error.Detail = $"Custom error detail--Exception type { exception.GetType().Name}";
-            //    };
-            //});
+            app.UseApiExceptionHandler(options =>
+            {
+                options.AddResponseDetails = (context, exception, error) =>
+                {
+                    //Can be defined here or separately
+                    error.Detail = $"Custom error detail--Exception type { exception.GetType().Name}";
+                };
+            });
 
             app.UseRouting();
 

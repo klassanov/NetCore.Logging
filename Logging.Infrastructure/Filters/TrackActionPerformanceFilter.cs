@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Logging.Infrastructure.Filters
 {
-    public class TrackActionPerformanceFilter : IActionFilter
+    public class TrackActionPerformanceFilter : ActionFilterAttribute //Make it attribute. Or U can soimply implement IActionFilter
     {
         private readonly ILogger<TrackActionPerformanceFilter> logger;
         private Stopwatch timer;
@@ -14,7 +14,7 @@ namespace Logging.Infrastructure.Filters
             this.logger = logger;
         }
 
-        public void OnActionExecuting(ActionExecutingContext context)
+        public override void OnActionExecuting(ActionExecutingContext context)
         {
             //this.timer = new Stopwatch();
             //this.timer.Start()
@@ -24,7 +24,7 @@ namespace Logging.Infrastructure.Filters
         }
 
 
-        public void OnActionExecuted(ActionExecutedContext context)
+        public override void OnActionExecuted(ActionExecutedContext context)
         {
             this.timer.Stop();
 

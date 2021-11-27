@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Logging.Infrastructure.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace Logging.API.Controllers
 {
+    //Use typefilter for proper injection/creation of the TrackActionPerformanceFilter
+    //Otherwise, it asks for parameters in the constructor
+    [TypeFilter(typeof(TrackActionPerformanceFilter))]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

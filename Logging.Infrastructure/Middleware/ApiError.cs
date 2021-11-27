@@ -1,4 +1,4 @@
-﻿namespace Logging.API.Middleware
+﻿namespace Logging.Infrastructure.Middleware
 {
     public class ApiError
     {

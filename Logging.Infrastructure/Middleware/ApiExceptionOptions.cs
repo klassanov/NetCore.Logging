@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Http;
 
-namespace Logging.API.Middleware
+namespace Logging.Infrastructure.Middleware
 {
     public class ApiExceptionOptions
     {

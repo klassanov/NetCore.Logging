@@ -1,4 +1,4 @@
-using Logging.API.Middleware;
+using Logging.Infrastructure.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

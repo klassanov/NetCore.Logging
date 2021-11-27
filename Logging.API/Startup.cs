@@ -1,3 +1,4 @@
+using Logging.Infrastructure.Filters;
 using Logging.Infrastructure.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,8 +20,14 @@ namespace Logging.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                //Add global filter of certain type
+                options.Filters.Add<TrackActionPerformanceFilter>();
+            });
+
             services.AddSwaggerGen();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +62,8 @@ namespace Logging.API
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }

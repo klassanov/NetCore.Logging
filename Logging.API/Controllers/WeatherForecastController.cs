@@ -25,7 +25,7 @@ namespace Logging.API.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            throw new Exception("Web API exception");
+            //throw new Exception("Web API exception");
 
 
             var rng = new Random();

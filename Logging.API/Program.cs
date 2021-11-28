@@ -15,6 +15,7 @@ namespace Logging.API
             Log.Logger = new LoggerConfiguration()
            .ReadFrom.Configuration(LogConfiguration)
            .WriteTo.File(new JsonFormatter(), path: @"C:\temp\logs\weather-api-log.json", shared: true)
+           .WriteTo.Seq("http://localhost:5341")
            .CreateLogger();
 
             try

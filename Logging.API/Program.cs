@@ -14,6 +14,7 @@ namespace Logging.API
         {
             Log.Logger = new LoggerConfiguration()
            .ReadFrom.Configuration(LogConfiguration)
+            //Write to both File and Seq
            .WriteTo.File(new JsonFormatter(), path: @"C:\temp\logs\weather-api-log.json", shared: true)
            .WriteTo.Seq("http://localhost:5341")
            .CreateLogger();
